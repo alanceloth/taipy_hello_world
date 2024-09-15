@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "taipy-hello-world"
+version = "0.1.0"
+description = ""
+authors = ["Alan Lanceloth <alan.lanceloth@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12.0"
+python-dotenv = "^1.0.1"
+taipy = "^3.1.1"
+faker = "^28.4.1"
+duckdb = "^1.1.0"
+dbt-core = "^1.8.6"
+dbt-postgres = "^1.8.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
