@@ -19,7 +19,8 @@ cadastros_unicos AS (
     pais,
     genero,
     telefone,
-    email
+    email,
+    data_cadastro
   FROM bronze_cadastros_unique
   WHERE rn = 1
 ),
@@ -57,6 +58,7 @@ SELECT
   c.genero,
   c.telefone,
   c.email,
+  data_cadastro,
   COALESCE(g.total_pedidos, 0) AS total_pedidos,
   COALESCE(g.total_gasto, 0) AS total_gasto
 FROM cadastros_unicos c

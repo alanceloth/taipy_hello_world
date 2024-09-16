@@ -14,6 +14,7 @@ WITH bronze_pedidos_clean AS (
     endereco_entrega_estado,
     endereco_entrega_pais,
     status_pedido,
+    data_pedido,
     -- Adiciona uma coluna booleana que indica se um cupom foi usado
     CASE 
       WHEN cupom IS NOT NULL THEN TRUE 
@@ -40,5 +41,6 @@ SELECT
   endereco_entrega_cidade,
   endereco_entrega_estado,
   endereco_entrega_pais,
-  status_pedido
+  status_pedido,
+  data_pedido
 FROM bronze_pedidos_clean
