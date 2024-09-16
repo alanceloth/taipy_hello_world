@@ -65,8 +65,8 @@ def gerar_dados_pedidos(cadastros_df, n_pedidos=100000):
 
 # Definindo a quantidade de dias e caminho de salvamento
 dias = 10  # Exemplo: 10 dias de dados
-caminho_bronze_cadastros = './datasets/bronze_data/cadastros/'
-caminho_bronze_pedidos = './datasets/bronze_data/pedidos/'
+caminho_raw_cadastros = './datasets/raw_data/cadastros/'
+caminho_raw_pedidos = './datasets/raw_data/pedidos/'
 
 # Gerando e salvando os arquivos de cadastros e pedidos
 for dia in range(dias):
@@ -79,7 +79,7 @@ for dia in range(dias):
     table_cadastros = pa.Table.from_pandas(df_cadastros)
     
     # Nome do arquivo Parquet de cadastros com base no dia
-    pq.write_table(table_cadastros, f'{caminho_bronze_cadastros}cadastros_{data_referencia}.parquet')
+    pq.write_table(table_cadastros, f'{caminho_raw_cadastros}cadastros_{data_referencia}.parquet')
     
     print(f'Arquivo de cadastros para {data_referencia} gerado com sucesso.')
     
@@ -90,7 +90,7 @@ for dia in range(dias):
     table_pedidos = pa.Table.from_pandas(df_pedidos)
     
     # Nome do arquivo Parquet de pedidos com base no dia
-    pq.write_table(table_pedidos, f'{caminho_bronze_pedidos}pedidos_{data_referencia}.parquet')
+    pq.write_table(table_pedidos, f'{caminho_raw_pedidos}pedidos_{data_referencia}.parquet')
     
     print(f'Arquivo de pedidos para {data_referencia} gerado com sucesso.')
 

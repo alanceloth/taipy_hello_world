@@ -3,8 +3,8 @@ from datetime import datetime
 
 # Caminhos dos arquivos de cadastros e pedidos
 data_referencia = (datetime.today()).strftime('%Y-%m-%d')
-caminho_bronze_cadastros = f'./datasets/bronze_data/cadastros/cadastros_2024-09-15.parquet'
-caminho_bronze_pedidos = f'./datasets/bronze_data/pedidos/pedidos_2024-09-15.parquet'
+caminho_raw_cadastros = f'./datasets/raw_data/cadastros/cadastros_2024-09-15.parquet'
+caminho_raw_pedidos = f'./datasets/raw_data/pedidos/pedidos_2024-09-15.parquet'
 
 # Conectando ao DuckDB
 con = duckdb.connect()
@@ -12,13 +12,13 @@ con = duckdb.connect()
 # Criar tabela temporária de cadastros
 con.execute(f"""
     CREATE TEMPORARY TABLE cadastros AS 
-    SELECT * FROM '{caminho_bronze_cadastros}'
+    SELECT * FROM '{caminho_raw_cadastros}'
 """)
 
 # Criar tabela temporária de pedidos
 con.execute(f"""
     CREATE TEMPORARY TABLE pedidos AS 
-    SELECT * FROM '{caminho_bronze_pedidos}'
+    SELECT * FROM '{caminho_raw_pedidos}'
 """)
 
 # Fazer o join e consolidar os dados conforme solicitado e mostrar apenas 10 linhas
