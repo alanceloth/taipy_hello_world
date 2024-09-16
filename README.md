@@ -1,0 +1,81 @@
+Gerar dados
+- Criar aplicação para gerar os dados do projeto
+- Deve gerar 1 milhão de linhas em 2 tabelas (cadastros e pedidos, relacionável entre si) e salvar em .parquet na pasta datasets, onde cada arquivo deve conter 100 mil linhas
+
+- Passa a passo CMD
+	- Criar projeto
+		- `poetry new crm_taypy`
+		- alterar a versão do python no `pyproject.toml` para `^3.12.0`
+		- criar o `.gitignore`
+		- adicionar a extensão `.parquet` no `.gitignore`
+		- `git init`
+		- `gh repo create`
+	- Usar o Python 3.12.6
+		- `pyenv update`
+		- `pyenv install 3.12.6`
+		- `pyenv local 3.12.6`
+		- `poetry env use 3.12.6`
+		- `poetry shell`
+	- Dependências
+		- `poetry add taipy`
+		- `poetry add faker`
+		- `poetry add python-dotenv`
+		- `poetry add duckdb`
+		- `poetry add dbt-core`
+		- `poetry add dbt-postgres`
+		- `poetry add psycopg2`
+		- `poetry add matplotlib`
+		- `poetry add seaborn`
+		- `poetry add plotly`
+- Setup banco de dados
+	- Criar o banco de dados na Amazon, copiar as credenciais para um arquivo `.env`
+		- Entrar no amazon console
+		- Escolher a opção Database
+		- Escolher o RDS
+		- Easy Create
+		- Postgres
+		- Freetier
+		- Deixar publicamente acessível
+		- Preencher os campos
+	- Configurar a VPC
+		- Entrar no grupo de segurança da VPC
+		- Editar regras Inbound
+		- Liberar acesso Postgres para meu IP 
+- RAW
+	- Gerar os arquivos usando o `generate_raw.py`
+		- Vai gerar um monte de .parquet na pasta datasets
+	- Gerar a camada raw usando o `load_raw_to_postgres.py`
+		- Usando o `duckdb`, conectar no banco `postgres` e subir em uma tabela só todos os arquivos `.parquet`
+- DBT (Bronze - Silver - Gold)
+	- `dbt init crm_taipy`
+	- Preencher os dados do banco de dados postgres do render no `dbt init`
+	- `cd crm_taipy`
+	- `dbt debug` (testar se a conexão e tudo está funcionando)
+	- Criar os arquivos na pasta `models/bronze` 
+		- `bronze_cadastros.sql`
+		- `bronze_pedidos.sql`
+	- Criar os arquivos na pasta `models/silver`
+		- `silver_cadastros.sql`
+		- `silver_pedidos.sql`
+	- Na pasta `models`
+		- `bronze_cadastros_tests.yml`
+		- `bronze_pedidos_test.yml`
+		- `silver_cadastros_test.yml`
+	- Criar os arquivos na pasta `models/gold`
+		- `gold_kpi_cadastros_por_dia.sql`
+		- `gold_kpi_cancelamento_por_estado_regiao.sql`
+		- `gold_kpi_faturados_por_dia_estado_regiao.sql`
+		- `gold_kpi_ltv.sql`
+		- `gold_kpi_pedidos_por_dia.sql`
+		- `gold_kpi_rfm.sql`
+		- `gold_kpi_taxa_conversao_estado_regiao.sql`
+		- `gold_kpi_ticket_medio_por_dia.sql`
+		- `gold_kpi_vendas_por_dia.sql`
+	- Executar o comando `dbt build` (vai executar os `dbt tests` e o `dbt run` em conjunto)
+
+Dashboard Taipy
+- Criar pasta `dashboard`
+	- Criar arquivo `dashboard.py`
+	- Criar arquivo `dashboard.md`
+- Criar arquivo `main.py`
+- Executar comando `poetry run python frontend/main.py`
