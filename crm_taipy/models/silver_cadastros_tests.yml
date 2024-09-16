@@ -7,5 +7,9 @@ models:
       - name: cpf
         description: "Número de CPF do cliente"
         tests:
-          - unique   # Testa se o CPF é único
-          - not_null # Testa se o CPF não é nulo
+          - unique:
+              config:
+                severity: error   # Define que o teste falhe a pipeline se houver duplicidade
+          - not_null:
+              config:
+                severity: error   # Define que o teste falhe a pipeline se houver valores nulos

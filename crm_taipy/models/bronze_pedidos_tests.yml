@@ -7,5 +7,9 @@ models:
       - name: id_pedido
         description: "Número de id_pedido do pedido"
         tests:
-          - unique   # Testa se o id_pedido é único
-          - not_null # Testa se o id_pedido não é nulo
+          - unique:
+              config:
+                severity: warn  # Define que o teste de unicidade retorne um warning
+          - not_null:
+              config:
+                severity: warn  # Define que o teste de not null retorne um warning

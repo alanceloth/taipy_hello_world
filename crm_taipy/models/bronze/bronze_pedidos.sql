@@ -16,5 +16,6 @@ SELECT
   endereco_entrega_cidade,
   endereco_entrega_estado,
   endereco_entrega_pais,
-  status_pedido
+  status_pedido,
+  data_pedido  
 FROM raw_data

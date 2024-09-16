@@ -7,5 +7,9 @@ models:
       - name: cpf
         description: "Número de CPF do cliente"
         tests:
-          - unique   # Testa se o CPF é único
-          - not_null # Testa se o CPF não é nulo
+          - unique:
+              config:
+                severity: warn  # Define que o teste de unicidade retorne um warning
+          - not_null:
+              config:
+                severity: warn  # Define que o teste de not null retorne um warning

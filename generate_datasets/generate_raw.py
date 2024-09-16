@@ -24,7 +24,8 @@ def gerar_dados_cadastro(n_linhas=100000):
             'pais': 'Brasil',
             'genero': fake.random_element(elements=('M', 'F')),
             'telefone': fake.phone_number(),
-            'email': fake.email()
+            'email': fake.email(),
+            'data_cadastro': fake.date_between(start_date='-2y', end_date='today')  # Nova coluna
         })
     return pd.DataFrame(data)
 
@@ -59,7 +60,8 @@ def gerar_dados_pedidos(cadastros_df, n_pedidos=100000):
             'endereco_entrega_cidade': fake.city(),
             'endereco_entrega_estado': fake.state(),
             'endereco_entrega_pais': 'Brasil',
-            'status_pedido': status
+            'status_pedido': status,
+            'data_pedido': fake.date_between(start_date='-2y', end_date='today')  # Nova coluna
         })
     return pd.DataFrame(data)
 

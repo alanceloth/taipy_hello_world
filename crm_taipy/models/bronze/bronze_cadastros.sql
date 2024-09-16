@@ -14,5 +14,6 @@ SELECT
   pais,
   genero,
   telefone,
-  email
+  email,
+  data_cadastro  
 FROM raw_data
