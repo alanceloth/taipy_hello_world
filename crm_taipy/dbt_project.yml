@@ -32,5 +32,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   crm_taipy:
     # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+    bronze:
+      +materialized: table
+    silver:
+      +materialized: table

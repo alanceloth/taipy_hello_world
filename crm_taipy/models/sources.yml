@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: crm_source
+    schema: public
+    tables:
+      - name: cadastros
+        description: "Tabela de cadastros do sistema CRM"
+
+      - name: pedidos
+        description: "Tabela de pedidos do sistema CRM"
