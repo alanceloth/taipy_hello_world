@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: bronze_pedidos
+    description: "Tabela de pedidos na camada bronze"
+    columns:
+      - name: id_pedido
+        description: "Número de id_pedido do pedido"
+        tests:
+          - unique   # Testa se o id_pedido é único
+          - not_null # Testa se o id_pedido não é nulo

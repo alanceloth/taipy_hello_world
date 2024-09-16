@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: silver_cadastros
+    description: "Tabela de cadastros na camada silver"
+    columns:
+      - name: cpf
+        description: "Número de CPF do cliente"
+        tests:
+          - unique   # Testa se o CPF é único
+          - not_null # Testa se o CPF não é nulo
