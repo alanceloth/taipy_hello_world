@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "taipy-hello-world"
+name = "taipy_crm"
 version = "0.1.0"
 description = ""
 authors = ["Alan Lanceloth <alan.lanceloth@gmail.com>"]
@@ -14,6 +14,9 @@ duckdb = "^1.1.0"
 dbt-core = "^1.8.6"
 dbt-postgres = "^1.8.2"
 psycopg2 = "^2.9.9"
+matplotlib = "^3.9.2"
+seaborn = "^0.13.2"
+plotly = "^5.24.1"
 
 
 [build-system]
