@@ -13,6 +13,7 @@ faker = "^28.4.1"
 duckdb = "^1.1.0"
 dbt-core = "^1.8.6"
 dbt-postgres = "^1.8.2"
+psycopg2 = "^2.9.9"
 
 
 [build-system]
