@@ -1,6 +1,7 @@
--- models/bronze_cadastros.sql
+-- models/bronze/bronze_cadastros.sql
 WITH raw_data AS (
-  SELECT * FROM {{ source('bronze_data', 'bronze_cadastros') }}
+  SELECT * 
+  FROM {{ source('raw_data', 'raw_cadastros') }}  -- Referenciando a tabela raw_cadastros
 )
 SELECT
   id,

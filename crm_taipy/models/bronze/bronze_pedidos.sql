@@ -1,6 +1,7 @@
--- models/bronze_pedidos.sql
+-- models/bronze/bronze_pedidos.sql
 WITH raw_data AS (
-  SELECT * FROM {{ source('bronze_data', 'bronze_pedidos') }}
+  SELECT * 
+  FROM {{ source('raw_data', 'raw_pedidos') }}  -- Referenciando a tabela raw_pedidos
 )
 SELECT
   id_pedido,

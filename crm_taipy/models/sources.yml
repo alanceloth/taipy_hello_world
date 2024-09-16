@@ -1,11 +1,10 @@
 version: 2
 
 sources:
-  - name: crm_source
-    schema: public
+  - name: raw_data
+    schema: public 
     tables:
-      - name: cadastros
-        description: "Tabela de cadastros do sistema CRM"
-
-      - name: pedidos
-        description: "Tabela de pedidos do sistema CRM"
+      - name: raw_cadastros
+        description: "Tabela raw com os cadastros originais"
+      - name: raw_pedidos
+        description: "Tabela raw com os pedidos originais"
